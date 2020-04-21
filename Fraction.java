@@ -2,21 +2,28 @@
 
 public class Fraction {
     //instance variables
-    int numerrator
-    int denominator
+    int numerator;
+    int denominator;
 
     public Fraction(int n, int d){
+        try{
+            numerator = n;
+            denominator = d;
+        }
+        catch (IllegalArgumentException e){
+
+        }
         if (n < 0 && d < 0){
             n = +n;
             d = +d;
         }
         else if (d < 0){
             n = -n;
-            d = +d
+            d = +d;
         }
 
         numerator = n;
-        denomimator = d;
+        denominator = d;
     }
 
     public Fraction(int n){
@@ -48,9 +55,23 @@ public class Fraction {
     }
 
     public Fraction add(Fraction n){
-        int comd = n.getDenomnimator() * denominator;
+        int comd = n.getDenominator() * denominator;
         int ans = n.getDenominator()*numerator + n.getNumerator()*denominator;
-        return Fraction(ans, comd)
+        return new Fraction(ans, comd);
+    }
+
+    public Fraction subtract(Fraction n){
+        int comd = n.getDenominator() * denominator;
+        int ans = n.getDenominator()*numerator - n.getNumerator()*denominator;
+        return new Fraction(ans, comd);
+    }
+
+    public Fraction multiply(Fraction n){
+        return new Fraction(n.getNumerator()*numerator, n.getDenominator()*denominator);
+    }
+
+    public Fraction divide(Fraction n){
+        return n;
     }
 
 
