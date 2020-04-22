@@ -1,18 +1,9 @@
-
-
 public class Fraction {
     //instance variables
     int numerator;
     int denominator;
 
     public Fraction(int n, int d){
-        try{
-            numerator = n;
-            denominator = d;
-        }
-        catch (IllegalArgumentException e){
-
-        }
         if (n < 0 && d < 0){
             n = +n;
             d = +d;
@@ -71,8 +62,37 @@ public class Fraction {
     }
 
     public Fraction divide(Fraction n){
+        try{
+            double i = (numerator * n.getDenominator()) / (denominator  * n.getNumerator());
+        }
+        catch (Exception e){
+            return new Fraction();
+        }
+        return new Fraction(numerator * n.getDenominator(), denominator  * n.getNumerator());
+    }
+
+    public boolean equals(Object n){
+        Fraction b = (Fraction) n;
+        // n.toLowestTerms();
+        if (b.getNumerator() == numerator && b.getDenominator() == denominator){
+            return true;
+        }
+        return false;
+    }
+    
+    public void toLowestTerms(){
+        int gcd = gcd(numerator, denominator);
+        numerator = numerator / gcd;
+        denominator = denominator / gcd;
+    }
+    
+    static int gcd(int n, int d){  
+    if (d == 0){  
         return n;
     }
+    return gcd(d, n % d);  
+      
+    } 
 
 
 
