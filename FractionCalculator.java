@@ -16,7 +16,6 @@ public class FractionCalculator{
         while (!quit){
             System.out.print("please enter an operation");
             temp = getOperation(kb);
-            System.out.println(temp);
             if (temp.equals("*")){
                 first = getFraction(kb);
                 second = getFraction(kb);
@@ -59,6 +58,7 @@ public class FractionCalculator{
 
 
         }
+        System.out.println("Goodbye! ");
 
 
     }
@@ -76,20 +76,18 @@ public class FractionCalculator{
     public static boolean validFraction(String str){
         //checks that the only input is allowed characters
         String copy = str;
-        copy.replaceAll("0", "").replaceAll("1", "").replaceAll("2", "");
-        copy.replaceAll("3", "").replaceAll("4", "").replaceAll("5", "");
-        copy.replaceAll("6", "").replaceAll("7", "").replaceAll("8", "");
-        copy.replaceAll("9", "").replaceAll("/", "").replaceAll("-", "");
-        if(copy.length() > 0){
-            return false;
-        }
-        //if negative is in the wrong place
-        if (str.contains("-")){
-            if (str.indexOf("-") > 0 || str.indexOf("-") == -1){
-                return false;
+        copy = copy.replaceAll("\\d", "");
+        System.out.println(copy);
+        if(copy.equals("/") || copy.isEmpty()){
+            //if negative is in the wrong place
+            if (str.contains("-")){
+                if (str.indexOf("-") > 0 || str.indexOf("-") == -1){
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static Fraction getFraction(Scanner kb){
