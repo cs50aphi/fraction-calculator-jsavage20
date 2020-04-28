@@ -7,6 +7,7 @@ public class FractionCalculator{
         boolean quit = false;
         Fraction first;
         Fraction second;
+        Fraction ans;
         String temp;
 
         System.out.println("Welcome to the Fraction Calculator!");
@@ -16,21 +17,45 @@ public class FractionCalculator{
             System.out.print("please enter an operation");
             temp = getOperation(kb);
             if (temp == "*"){
-                
+                first = getFraction(kb);
+                second = getFraction(kb);
+                ans = first.multiply(second);
+                System.out.println(first.toString() + " * " + second.toString() + " is " + ans.toString());
             }
             else if (temp =="/"){
-                
+                first = getFraction(kb);
+                second = getFraction(kb);
+                ans = first.divide(second);
+                System.out.println(first.toString() + " / " + second.toString() + " is " + ans.toString());
+
             }
             else if (temp == "+"){
-                
+                first = getFraction(kb);
+                second = getFraction(kb);
+                ans = first.add(second);
+                System.out.println(first.toString() + " + " + second.toString() + " is " + ans.toString());
             }
             else if (temp == "-"){
-                
+                first = getFraction(kb);
+                second = getFraction(kb);
+                ans = first.subtract(second);
+                System.out.println(first.toString() + " - " + second.toString() + " is " + ans.toString());
             }
             else if (temp == "q" || temp == "Q"){
                 quit = true;
             }
-            
+            else if (temp == "="){
+                first = getFraction(kb);
+                second = getFraction(kb);
+                if (first.equals(second)){
+                    System.out.println(first.toString() + " is equal to " + second.toString());
+                }
+                else{
+                    System.out.println(first.toString() + " is not equal to " + second.toString());
+                }
+
+            }
+
 
         }
 
@@ -64,5 +89,28 @@ public class FractionCalculator{
             }
         }
         return true;
+    }
+
+    public static Fraction getFraction(Scanner kb){
+        System.out.println("Please enter a fraction (a/b) or integer (a): ");
+        String frac = kb.nextLine();
+        int split;
+        int first;
+        int second;
+        if (validFraction(frac)){
+            if (frac.contains("/")){
+                split = frac.indexOf("/");
+                first = Integer.parseInt(frac.substring(0,split));
+                second = Integer.parseInt(frac.substring(split +1,frac.length()));
+                return new Fraction(first, second);
+            }
+            else{
+                first = Integer.parseInt(frac);
+                return new Fraction(first);
+            }
+
+        }
+        System.out.print("invalid request ");
+        return getFraction(kb);
     }
 }
