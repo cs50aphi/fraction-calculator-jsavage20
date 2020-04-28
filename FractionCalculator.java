@@ -17,35 +17,35 @@ public class FractionCalculator{
             System.out.print("please enter an operation");
             temp = getOperation(kb);
             System.out.println(temp);
-            if (temp == "*"){
+            if (temp.equals("*")){
                 first = getFraction(kb);
                 second = getFraction(kb);
                 ans = first.multiply(second);
                 System.out.println(first.toString() + " * " + second.toString() + " is " + ans.toString());
             }
-            else if (temp =="/"){
+            else if (temp.equals("/")){
                 first = getFraction(kb);
                 second = getFraction(kb);
                 ans = first.divide(second);
                 System.out.println(first.toString() + " / " + second.toString() + " is " + ans.toString());
 
             }
-            else if (temp == "+"){
+            else if (temp.equals("+")){
                 first = getFraction(kb);
                 second = getFraction(kb);
                 ans = first.add(second);
                 System.out.println(first.toString() + " + " + second.toString() + " is " + ans.toString());
             }
-            else if (temp == "-"){
+            else if (temp.equals("-")){
                 first = getFraction(kb);
                 second = getFraction(kb);
                 ans = first.subtract(second);
                 System.out.println(first.toString() + " - " + second.toString() + " is " + ans.toString());
             }
-            else if (temp == "q" || temp == "Q"){
+            else if (temp.equals("q") || temp.equals("Q")){
                 quit = true;
             }
-            else if (temp == "="){
+            else if (temp.equals("=")){
                 first = getFraction(kb);
                 second = getFraction(kb);
                 if (first.equals(second)){
