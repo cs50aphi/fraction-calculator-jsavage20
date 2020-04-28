@@ -16,6 +16,7 @@ public class FractionCalculator{
         while (!quit){
             System.out.print("please enter an operation");
             temp = getOperation(kb);
+            System.out.println(temp);
             if (temp == "*"){
                 first = getFraction(kb);
                 second = getFraction(kb);
